@@ -25,6 +25,8 @@ def get_account_id(file):
     with open(file.name) as data_file:
         try:
             transactions = json.load(data_file)["transactions"]
+            if len(transactions) == 0:
+                return False
             if "account_id" in transactions[0]:
                 return transactions[0]["account_id"]
             else:
